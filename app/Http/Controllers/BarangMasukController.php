@@ -8,6 +8,7 @@ use App\Models\Barang;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\Paginator;
 
 class BarangMasukController extends Controller
 {
@@ -20,7 +21,7 @@ public function index(Request $request)
     
     $query = DB::table('barangmasuk')
                 ->select('barangmasuk.id', 'barangmasuk.tgl_masuk', 'barangmasuk.qty_masuk','barangmasuk.barang_id', 'barang.merk')
-                ->join('barang', 'barangmasuk.barang_id', '=', 'barang.id');
+                ->leftjoin('barang', 'barangmasuk.barang_id', '=', 'barang.id');
 
     if ($search) {
         $query->where(function($q) use ($search) {

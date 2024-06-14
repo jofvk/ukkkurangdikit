@@ -57,7 +57,7 @@
                                 <td>{{ $rowbarangkeluar->id  }}</td>
                                 <td>{{ $rowbarangkeluar->tgl_keluar  }}</td>
                                 <td>{{ $rowbarangkeluar->qty_keluar  }}</td>
-                                <td>{{ $rowbarangkeluar->barang_id  }} - {{ $barangData[$rowbarangkeluar->barang_id]->merk }}</td>
+                                <td>{{ $rowbarangkeluar->barang_id  }} - {{ $rowbarangkeluar->merk }}</td>
                                 <td class="text-center"> 
                                     <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('barangkeluar.destroy', $rowbarangkeluar->id) }}" method="POST">
                                         <a href="{{ route('barangkeluar.show', $rowbarangkeluar->id) }}" class="btn btn-sm btn-dark"><i class="fa fa-eye"></i></a>

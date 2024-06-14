@@ -49,7 +49,7 @@
                             <th>Seri</th>
                             <th>Spesifikasi</th>
                             <th>Stok</th>
-                            <th>Kategori ID</th>
+                            <th>ID - Deskripsi</th>
                             <th style="width: 15%">AKSI</th>
                         </tr>
                     </thead>
@@ -62,7 +62,7 @@
                                 <td>{{ $rowbarang->seri }}</td>
                                 <td>{{ $rowbarang->spesifikasi }}</td>
                                 <td>{{ $rowbarang->stok }}</td>
-                                <td>{{ $rowbarang->kategori_id }}</td>
+                                <td>{{ $rowbarang->kategori_id }} - {{ $rowbarang->deskripsi }}</td>
                                 <td class="text-center"> 
                                     <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('barang.destroy', $rowbarang->id) }}" method="POST">
                                         <a href="{{ route('barang.show', $rowbarang->id) }}" class="btn btn-sm btn-dark"><i class="fa fa-eye"></i></a>

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\QueryException;
+use Illuminate\Pagination\Paginator;
 
 class BarangKeluarController extends Controller
 {
@@ -22,7 +23,7 @@ class BarangKeluarController extends Controller
         
         $query = DB::table('barangkeluar')
                     ->select('barangkeluar.id', 'barangkeluar.tgl_keluar', 'barangkeluar.qty_keluar','barangkeluar.barang_id', 'barang.merk')
-                    ->join('barang', 'barangkeluar.barang_id', '=', 'barang.id');
+                    ->leftJoin('barang', 'barangkeluar.barang_id', '=', 'barang.id');
     
         if ($search) {
             $query->where(function($q) use ($search) {
@@ -34,8 +35,8 @@ class BarangKeluarController extends Controller
         }
     
         $rsetBarangKeluar = $query->paginate(5);
-    
-        // Fetch related data separately
+
+        Paginator::useBootstrap();
         $barangIds = $rsetBarangKeluar->pluck('barang_id')->toArray();
         $barangData = DB::table('barang')->whereIn('id', $barangIds)->get()->keyBy('id');
     
