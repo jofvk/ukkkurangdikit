@@ -60,13 +60,7 @@
 
                             <div class="form-group">
                                 <label class="font-weight-bold">KATEGORI_ID</label>
-                                <!-- <input type="number" class="form-control @error('kategori_id') is-invalid @enderror" name="kategori_id" value="{{ old('nis') }}" placeholder="Masukkan kategori_id"> -->
-                                <!-- <select name="kategori" id="" class="form-control">
-                                    @foreach($kategori as $rowkategori)
-                                    <option value="{{ $rowkategori->id }}">{{ $rowkategori->id }} - {{ $rowkategori->deskripsi }}</option>
-                                    @endforeach
-                                </select> -->
-                                <select class="form-control " name="kategori_id" aria-label="Default select example">
+                                <select class="form-control" name="kategori_id" aria-label="Default select example">
                                         <option value="blank" selected>Pilih Kategori</option>
                                         @foreach($kategori as $rowkategori)
                                             <option value="{{ $rowkategori->id }}">{{ $rowkategori->id }} - {{ $rowkategori->deskripsi }}</option>

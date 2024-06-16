@@ -11,7 +11,7 @@
                             @method('PUT')
 
                             <div class="form-group">
-                                <label class="font-weight-bold">merk</label>
+                                <label class="font-weight-bold">MERK</label>
                                 <input type="text" class="form-control @error('merk') is-invalid @enderror" name="merk" value="{{ old('merk',$rsetBarang->merk) }}" placeholder="Masukkan Nama Siswa">
                             
                                 <!-- error message untuk nama -->
@@ -35,7 +35,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="font-weight-bold">spesifikasi</label>
+                                <label class="font-weight-bold">SPESIFIKASI</label>
                                 <input type="text" class="form-control @error('spesifikasi') is-invalid @enderror" name="spesifikasi" value="{{ old('spesifikasi',$rsetBarang->spesifikasi) }}" placeholder="Masukkan Nomor Induk Siswa">
                             
                                 <!-- error message untuk spesifikasi -->
@@ -47,7 +47,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="font-weight-bold">stok</label>
+                                <label class="font-weight-bold">STOK</label>
                                 <input type="number" class="form-control @error('stok') is-invalid @enderror" name="stok" value="{{ old('stok',$rsetBarang->stok) }}" placeholder="Masukkan Nomor Induk Siswa">
                             
                                 <!-- error message untuk seri -->
@@ -59,14 +59,17 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="font-weight-bold">kategori_id</label>
-                                <!-- <input type="number" class="form-control @error('kategori_id') is-invalid @enderror" name="kategori_id" value="{{ old('kategori_id',$rsetBarang->kategori_id) }}" placeholder="Masukkan Nomor Induk Siswa"> -->
-                                <select name="kategori_id" id="">
-                                    @foreach($kategoriID as $map)
-                                    <option value="{{$map->id}}">{{$map->id}}</option>
+                                <label class="font-weight-bold">KATEGORI_ID</label>
+                                <select class="form-control" name="kategori_id" id="">
+                                    <option value="{{ old('kategori_id', $rsetBarang->kategori_id) }}">
+                                        {{ old('kategori_id', $rsetBarang->kategori_id) }} - 
+                                        {{ old('deskripsi', optional($rsetBarang->kategori)->deskripsi) }}
+                                    </option>
+                                    @foreach($kategoriID as $rowkategori)
+                                        <option value="{{ $rowkategori->id }}">{{ $rowkategori->id }} - {{ $rowkategori->deskripsi }}</option>
                                     @endforeach
-                                </select>
-                                <!-- error message untuk seri -->
+                                </select>                            
+                                <!-- error message untuk nis -->
                                 @error('kategori_id')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}

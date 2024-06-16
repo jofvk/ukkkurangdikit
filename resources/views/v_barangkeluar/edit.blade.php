@@ -11,7 +11,7 @@
                             @method('PUT')
 
                             <div class="form-group">
-                                <label class="font-weight-bold">tgl_keluar</label>
+                                <label class="font-weight-bold">TGL_KELUAR</label>
                                 <input type="date" class="form-control @error('tgl_keluar') is-invalid @enderror" name="tgl_keluar" value="{{ old('tgl_keluar',$rsetBarangKeluar->tgl_keluar) }}" placeholder="Masukkan Nama Siswa">
                             
                                 <!-- error message untuk nama -->
@@ -23,7 +23,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="font-weight-bold">qty_keluar</label>
+                                <label class="font-weight-bold">QTY_KELUAR</label>
                                 <input type="text" class="form-control @error('qty_keluar') is-invalid @enderror" name="qty_keluar" value="{{ old('qty_keluar',$rsetBarangKeluar->qty_keluar) }}" placeholder="Masukkan Nomor Induk Siswa">
                             
                                 <!-- error message untuk qty_keluar -->
@@ -35,18 +35,19 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="font-weight-bold">barang_id</label>
-                                <!-- <input type="number" class="form-control @error('barang_id') is-invalid @enderror" name="barang_id" value="{{ old('barang_id',$rsetBarangKeluar->barang_id) }}" placeholder="Masukkan Nomor Induk Siswa"> -->
-                                <select name="barang_id" id="">
-                                    <option value="{{ old('barang_id',$rsetBarangKeluar->barang_id) }}">{{ old('barang_id',$rsetBarangKeluar->barang_id) }}</option>
-                                    @foreach($barangID as $rowbarangID)
-                                    <option value="{{ $rowbarangID->id }}">{{ $rowbarangID->id }} - {{ $rowbarangID->merk }}
-
+                                <label class="font-weight-bold">BARANG_ID</label>
+                                <select class="form-control" name="barang_id" id="">
+                                <option value="{{ old('id', $rsetBarangKeluar->id) }}">
+                                    Merk barang: {{ old('merk', optional($rsetBarangKeluar->barang)->merk) }} -- 
+                                    Stok sekarang: {{ old('stok', optional($rsetBarangKeluar->barang)->stok) }}
                                     </option>
+                                    @foreach($barangID as $barangIdrow)
+                                        <option value="{{$barangIdrow->id}}">Merk barang: {{$barangIdrow->merk}} -- Stok sekarang: {{$barangIdrow->stok}}</option>
                                     @endforeach
                                 </select>
-                                <!-- error message untuk qty_keluar -->
-                                @error('barang_id')
+                            
+                                <!-- error message untuk nis -->
+                                @error('nis')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>

@@ -115,6 +115,7 @@ class BarangController extends Controller
     public function edit(string $id)
     {
         $rsetBarang = Barang::find($id);
+        
         $kategoriID = Kategori::all();
         return view('v_barang.edit', compact('rsetBarang', 'kategoriID'));
 

@@ -11,7 +11,7 @@
                             @method('PUT')
 
                             <div class="form-group">
-                                <label class="font-weight-bold">deskripsi</label>
+                                <label class="font-weight-bold">DESKRIPSI</label>
                                 <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" value="{{ old('deskripsi',$rsetKategori->deskripsi) }}" placeholder="Masukkan Nama Siswa">
                             
                                 <!-- error message untuk nama -->
@@ -23,11 +23,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="font-weight-bold">kategori</label>
-                                
-                                <div class="form-check">
-                                   
-                                    <select class="form-select" name="kategori" aria-label="Default select example">
+                                <label class="font-weight-bold">KATEGORI</label>
+                                    <select class="form-control" name="kategori" aria-label="Default select example">
                                         @foreach($akategori as $key=>$val)
                                             @if($rsetKategori->kategori==$key)
                                                 <option value="{{ $key }}" selected>{{ $val }}</option>
@@ -37,7 +34,6 @@
                                         @endforeach
                                     </select>
 
-                                </div>
                                 <!-- error message untuk kategori -->
                                 @error('kategori')
                                     <div class="alert alert-danger mt-2">
