@@ -13,7 +13,7 @@
                             </tr>
                             <tr>
                                 <td>Seri</td>
-                                <td>{{ $rsetKategori->kategori }}</td>
+                                <td>{{ $rsetKategori->kat }}</td>
                             </tr>
                         </table>
                     </div>

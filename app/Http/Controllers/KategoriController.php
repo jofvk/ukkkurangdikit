@@ -89,11 +89,15 @@ class KategoriController extends Controller
      */
     public function show(string $id)
     {
-        $rsetKategori = Kategori::find($id);
-        
-
+        $rsetKategori = DB::table('kategori')
+            ->select('id', 'deskripsi', DB::raw('getKategori(kategori) as kat'))
+            ->where('id', $id)
+            ->first();
+    
         return view('v_kategori.show', compact('rsetKategori'));
     }
+    
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -143,14 +147,4 @@ class KategoriController extends Controller
         }
     }
 
-    public function search(Request $request)
-    {
-        $query = $request->input('search');
-        $rsetResults = DB::select('CALL SearchKategori(?)', [$query]);
-
-        $aKategori = $this->aKategori;
-
-        return view('v_kategori.search', compact('rsetResults', 'query', 'aKategori'));
-    }
-    
 }

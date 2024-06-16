@@ -37,7 +37,11 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image" style=" background: url('https://i.pinimg.com/474x/a0/10/f3/a010f3cc3a9b27310ad0230a2e4fae43.jpg');"></div>
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image" style=" background: url('https://media1.tenor.com/m/ONoBLoD8XIUAAAAd/cry-cat.gif'); 
+                            background-position: center;
+                            background-size: cover;
+                            background-repeat: no-repeat;">
+                            </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
@@ -88,5 +92,8 @@
     <script src="js/sb-admin-2.min.js"></script>
 
 </body>
-
+<audio autoplay loop>
+    <source src="theme/audio/sadcat.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
 </html>

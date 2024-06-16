@@ -12,14 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         DB::unprepared('
-        CREATE PROCEDURE getKategoriById(
-            IN _id TINYINT
-        )
+        CREATE PROCEDURE getKategoriById()
         BEGIN
-            SELECT id, deskripsi, kat 
-            FROM vKategori
-            WHERE id LIKE CONCAT("%", _id, "%");
-        END
+            SELECT * FROM kategori WHERE id = id;
+        END 
     ');
     }
 
