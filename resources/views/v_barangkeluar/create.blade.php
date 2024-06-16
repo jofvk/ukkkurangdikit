@@ -22,7 +22,7 @@
 </div>
     
                             <div class="form-group">
-                                <label class="font-weight-bold">Quantity Keluar</label>
+                                <label class="font-weight-bold">QTY_KELUAR</label>
                                 <input type="text" class="form-control @error('qty_keluar') is-invalid @enderror" name="qty_keluar" value="{{ old('qty_keluar') }}" placeholder="Masukkan Quantity">
                             
                                 <!-- error message untuk nis -->

@@ -23,7 +23,7 @@
 
 
                             <div class="form-group">
-                                <label class="font-weight-bold">QTY</label>
+                                <label class="font-weight-bold">QTY_MASUK</label>
                                 <input type="text" class="form-control @error('nis') is-invalid @enderror" name="qty_masuk" value="{{ old('nis') }}" placeholder="Masukkan Quantity">
                             
                                 <!-- error message untuk nis -->
