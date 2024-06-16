@@ -34,8 +34,8 @@ class BarangController extends Controller
         }
     
         $rsetBarang = $query->paginate(5);
-
         Paginator::useBootstrap();
+        
         return view('v_barang.index', compact('rsetBarang'));
     }
 

@@ -35,7 +35,6 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <!-- <th>ID</th> -->
                             <th>DESKRIPSI</th>
                             <th>KATEGORI</th>
                             <th style="width: 15%">AKSI</th>
@@ -45,8 +44,7 @@
                     <tbody>
                         @forelse ($rsetKategori as $index => $rowkategori)
                             <tr>
-                                <td>{{ $index + 1 }}</td>
-                                <!-- <td>{{ $rowkategori->id  }}</td> -->
+                            <td>{{ $loop->iteration + ($rsetKategori->currentPage() - 1) * $rsetKategori->perPage() }}</td>
                                 <td>{{ $rowkategori->deskripsi  }}</td>
                                 <td>{{ $rowkategori->kat ?? 'Kategori Tidak Ditemukan'  }}</td>
                                 <td class="text-center"> 
@@ -86,7 +84,9 @@
                 </table>
 
                 
-                {{-- {{ $siswa->links() }} --}}
+                <div class="d-flex justify-content-end">
+                    {{ $rsetKategori->links() }} 
+                </div>
 
             </div>
         </div>

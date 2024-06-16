@@ -43,7 +43,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>No</th>
                             <th>Tgl Keluar</th>
                             <th>Quantity</th>
                             <th>ID - Merk Barang</th>
@@ -52,9 +52,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($rsetBarangKeluar as $rowbarangkeluar)
+                        @forelse ($rsetBarangKeluar as $index => $rowbarangkeluar)
                             <tr>
-                                <td>{{ $rowbarangkeluar->id  }}</td>
+                                <td>{{ $loop->iteration + ($rsetBarangKeluar->currentPage() - 1) * $rsetBarangKeluar->perPage() }}</td>
                                 <td>{{ $rowbarangkeluar->tgl_keluar  }}</td>
                                 <td>{{ $rowbarangkeluar->qty_keluar  }}</td>
                                 <td>{{ $rowbarangkeluar->barang_id  }} - {{ $rowbarangkeluar->merk }}</td>
@@ -77,7 +77,9 @@
                     </tbody>
                     
                 </table>
-                {{-- {{ $siswa->links() }} --}}
+                <div class="d-flex justify-content-end">
+                    {{ $rsetBarangKeluar->links() }} 
+                </div>
 
             </div>
         </div>

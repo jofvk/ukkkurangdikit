@@ -33,8 +33,8 @@ public function index(Request $request)
     }
 
     $rsetBarangMasuk = $query->paginate(5);
+    Paginator::useBootstrap();
 
-    // Fetch related data separately
     $barangIds = $rsetBarangMasuk->pluck('barang_id')->toArray();
     $barangData = DB::table('barang')->whereIn('id', $barangIds)->get()->keyBy('id');
 

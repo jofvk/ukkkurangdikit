@@ -57,7 +57,6 @@
                         @forelse ($rsetBarang as $index => $rowbarang)
                             <tr>
                                 <td>{{ $loop->iteration + ($rsetBarang->currentPage() - 1) * $rsetBarang->perPage() }}</td>
-                                <!-- <td>{{ $rowbarang->id }}</td> -->
                                 <td>{{ $rowbarang->merk }}</td>
                                 <td>{{ $rowbarang->seri }}</td>
                                 <td>{{ $rowbarang->spesifikasi }}</td>
@@ -82,7 +81,7 @@
                 </table>
 
                 <div class="d-flex justify-content-end">
-                    {{ $rsetBarang->links() }}
+                    {{ $rsetBarang->links() }} 
                 </div>
             </div>
         </div>

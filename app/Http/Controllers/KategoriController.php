@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Kategori;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\ServiceProviders;
 
 
 class KategoriController extends Controller
@@ -14,27 +16,28 @@ class KategoriController extends Controller
      * Display a listing of the resource.
      */
   
-public function index(Request $request)
-{
-    $search = $request->input('search');
-
-    if ($search) {
-        $rsetKategori = DB::table('kategori')
-                        ->select('id', 'deskripsi', DB::raw('getKategori(kategori) COLLATE utf8mb4_unicode_ci as kat'))
-                        ->where('id', 'like', '%' . $search . '%')
-                        ->orWhere('deskripsi', 'like', '%' . $search . '%')
-                        ->orWhere('kategori', 'like', '%' . $search . '%')
-                        ->orWhere(DB::raw('getKategori(kategori) COLLATE utf8mb4_unicode_ci'), 'like', '%' . $search . '%')
-                        ->paginate(5);
-    } else {
-        $rsetKategori = DB::table('kategori')
-                        ->select('id', 'deskripsi', DB::raw('getKategori(kategori) COLLATE utf8mb4_unicode_ci as kat'))
-                        ->paginate(5);
-    
-    }
-
-    return view('v_kategori.index', compact('rsetKategori'));
-}
+     public function index(Request $request)
+     {
+         $search = $request->input('search');
+     
+         $query = DB::table('kategori')
+                    ->select('id', 'deskripsi', DB::raw('getKategori(kategori) COLLATE utf8mb4_unicode_ci as kat'));
+     
+         if ($search) {
+             $query->where(function ($q) use ($search) {
+                 $q->where('id', 'like', '%' . $search . '%')
+                   ->orWhere('deskripsi', 'like', '%' . $search . '%')
+                   ->orWhere('kategori', 'like', '%' . $search . '%')
+                   ->orWhere(DB::raw('getKategori(kategori) COLLATE utf8mb4_unicode_ci'), 'like', '%' . $search . '%');
+             });
+         }
+     
+         $rsetKategori = $query->paginate(5);
+         Paginator::useBootstrap();
+     
+         return view('v_kategori.index', compact('rsetKategori'));
+     }
+     
 
 
     /**
